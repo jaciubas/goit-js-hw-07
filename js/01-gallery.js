@@ -21,9 +21,9 @@ gallery.addEventListener("click", (e) => {
   e.preventDefault();
   const modal = basicLightbox.create(`<img
     class="gallery__image"
-    src="${item.preview}"
+    src="${e.preview}"
     data-source="${item.original}"
-    alt="${item.description}"
+    alt="${e.description}"
   />}"`);
   modal.show();
 });
