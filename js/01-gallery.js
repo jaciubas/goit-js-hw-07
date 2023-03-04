@@ -15,25 +15,17 @@ galleryItems.forEach((item) => {
 </div>`;
 
   gallery.insertAdjacentHTML("beforeend", galleryImg);
-  gallery.addEventListener("click", (e) => {
-    e.preventDefault();
-    const modal = basicLightbox.create(`<img
-      class="gallery__image"
-      src="${item.original}"
-      data-source="${item.original}"
-      alt="${item.description}"
-    />}"`);
-    modal.show();
-  });
 });
 
-// gallery.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   const modal = basicLightbox.create(`<img
-//     class="gallery__image"
-//     src="${e.preview}"
-//     data-source="${e.original}"
-//     alt="${e.description}"
-//   />}"`);
-//   modal.show();
-// });
+gallery.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.nodeName !== "IMG") {
+    return;
+  }
+
+  const imgSrcOrginal = e.target.dataset.source;
+  const modal = basicLightbox.create(`<img
+    src="${imgSrcOrginal}"
+  />}"`);
+  modal.show();
+});
